@@ -1,6 +1,10 @@
 <h1>Check out our Cheese</h1>
-<ul>
-    <li *ngFor="let cheese of CHEESES">
-        {{ cheese.name }}
+<ul class="list-group">
+    <li *ngFor="let cheese of CHEESES" class="list-group-item">
+        <h4 class="list-group-item-heading">
+             {{ cheese.name }}
+        </h4>
+        <h6>{{ cheese.category }}</h6>
+        <h6>${{ cheese.price }}</h6>
     </li>
 </ul>
