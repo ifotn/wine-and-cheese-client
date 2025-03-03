@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { CheeseService } from '../../services/cheese.service';
 
-export class Cheese {
-  _id: string | undefined;
-  name: string | undefined;
-}
+// export class Cheese {
+//   _id: string | undefined;
+//   name: string | undefined;
+// }
 
 @Component({
   selector: 'app-cheese',
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './cheese.component.html'
 })
 export class CheeseComponent implements OnInit {
 
   CHEESES: any;
+  _id: string | undefined;
+  name: string | undefined;
+  price: number | undefined;
+  stinkRating: number | undefined;
+  category: string | undefined;
 
   constructor(private service: CheeseService) {}
 
@@ -22,6 +27,21 @@ export class CheeseComponent implements OnInit {
     this.service.getCheeses().subscribe(response => {
       this.CHEESES = response;
     })
+  }
+
+  addCheese(): void {
+    // create new object from form properties
+    let newCheese = {
+      name: this.name,
+      price: this.price,
+      stinkRating: this.stinkRating,
+      category: this.category
+    };
+
+    // pass to service
+    this.service.addCheese(newCheese).subscribe(response => {
+      this.getCheeses();
+    });
   }
 
   ngOnInit() {
