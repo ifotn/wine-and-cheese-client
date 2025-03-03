@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { CheeseService } from '../../services/cheese.service';
+import { FormsModule } from '@angular/forms';
 
 // export class Cheese {
 //   _id: string | undefined;
@@ -9,7 +10,7 @@ import { CheeseService } from '../../services/cheese.service';
 
 @Component({
   selector: 'app-cheese',
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, FormsModule],
   templateUrl: './cheese.component.html'
 })
 export class CheeseComponent implements OnInit {
@@ -41,7 +42,15 @@ export class CheeseComponent implements OnInit {
     // pass to service
     this.service.addCheese(newCheese).subscribe(response => {
       this.getCheeses();
+      this.resetForm();
     });
+  }
+
+  resetForm(): void {
+    this.name = undefined;
+    this.price = undefined;
+    this.stinkRating = undefined;
+    this.category = undefined;
   }
 
   ngOnInit() {

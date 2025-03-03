@@ -16,15 +16,15 @@
     <section class="col-lg-6">
         <fieldset>
             <label for="name">Name: *</label> 
-            <input required />
+            <input required [(ngModel)]="name" />
         </fieldset>
         <fieldset>
             <label for="price">Price:</label>
-            <input type="number" min="0.01" />
+            <input type="number" min="0.01" [(ngModel)]="price" />
         </fieldset>
         <fieldset>
             <label for="stinkRating">Stink Rating: *</label>
-            <select>
+            <select [(ngModel)]="stinkRating">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -34,8 +34,9 @@
         </fieldset>
         <fieldset>
             <label for="category">Category: *</label>
-            <input required />
+            <input required [(ngModel)]="category" />
         </fieldset>
+        <button class="btn btn-primary offset-2" (click)="addCheese()">Save</button>
     </section>
 </section>
 
