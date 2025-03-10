@@ -17,6 +17,10 @@ export class CheeseService {
   }
 
   addCheese(cheese: any) {
-    return this.http.post(`${this.serverUrl}/cheeses`, cheese)
+    return this.http.post(`${this.serverUrl}/cheeses`, cheese);
+  }
+
+  deleteCheese(_id: string) {
+    return this.http.delete(`${this.serverUrl}/cheeses/${_id}`);
   }
 }
