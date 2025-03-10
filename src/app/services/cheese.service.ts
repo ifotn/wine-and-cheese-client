@@ -23,4 +23,8 @@ export class CheeseService {
   deleteCheese(_id: string) {
     return this.http.delete(`${this.serverUrl}/cheeses/${_id}`);
   }
+
+  updateCheese(cheese: any) {
+    return this.http.put(`${this.serverUrl}/cheeses/${cheese._id}`, cheese);
+  }
 }

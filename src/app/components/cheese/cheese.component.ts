@@ -69,13 +69,28 @@ export class CheeseComponent implements OnInit {
     this.category = cheese.category;
   }
 
-  deleteCheese(_id: string) {
+  deleteCheese(_id: string): void {
     if (confirm('Are you sure you want to delete this cheese?')) {
       this.service.deleteCheese(_id).subscribe(response => {
         this.getCheeses();
         this.resetForm();
       });
     }  
+  }
+
+  updateCheese(): void {
+    let cheese = {
+      _id: this._id,
+      name: this.name,
+      price: this.price,
+      stinkRating: this.stinkRating,
+      category: this.category
+    }
+
+    this.service.updateCheese(cheese).subscribe(response => {
+      this.getCheeses();
+      this.resetForm();
+    });
   }
 
   // CHEESES: Cheese[] = [
