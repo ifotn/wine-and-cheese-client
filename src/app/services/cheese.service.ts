@@ -16,15 +16,17 @@ export class CheeseService {
     return this.http.get(`${this.serverUrl}/cheeses`);
   }
 
+  // add withCredentials: true param to any private method call
+  // this passes our jwt in the authorization header
   addCheese(cheese: any) {
-    return this.http.post(`${this.serverUrl}/cheeses`, cheese);
+    return this.http.post(`${this.serverUrl}/cheeses`, cheese, { withCredentials: true });
   }
 
   deleteCheese(_id: string) {
-    return this.http.delete(`${this.serverUrl}/cheeses/${_id}`);
+    return this.http.delete(`${this.serverUrl}/cheeses/${_id}`, { withCredentials: true });
   }
 
   updateCheese(cheese: any) {
-    return this.http.put(`${this.serverUrl}/cheeses/${cheese._id}`, cheese);
+    return this.http.put(`${this.serverUrl}/cheeses/${cheese._id}`, cheese, { withCredentials: true });
   }
 }
