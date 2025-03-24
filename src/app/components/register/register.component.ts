@@ -20,9 +20,18 @@ export class RegisterComponent {
   constructor(private authService: AuthService) {}
 
   register() {
+    // https://www.geeksforgeeks.org/javascript-program-to-validate-password-using-regular-expressions/
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+
     // confirm password match
     if (this.password !== this.confirm) {
       this.message = 'Passwords do not match';
+      this.messageClass = 'alert alert-danger';
+      return;
+    }
+    else if (this.password != undefined && regex.test(this.password) === false) {
+      // thanks kyler for this solution!
+      this.message = 'Invalid Password';
       this.messageClass = 'alert alert-danger';
       return;
     }
