@@ -36,9 +36,9 @@
             <label for="category">Category: *</label>
             <input required [(ngModel)]="category" />
         </fieldset>
-        <button class="btn btn-primary offset-2 m-2" *ngIf="!_id" (click)="addCheese()">Save</button>
-        <button class="btn btn-primary offset-2 m-2" *ngIf="_id" (click)="updateCheese()">Save</button>
-        <button class="btn btn-danger" *ngIf="_id" (click)="deleteCheese(_id)">Delete</button>
+        <button class="btn btn-primary offset-2 m-2" *ngIf="!_id" (click)="addCheese()"><i class="bi bi-plus-square-fill"></i> Save</button>
+        <button class="btn btn-primary offset-2 m-2" *ngIf="_id" (click)="updateCheese()"><i class="bi bi-plus-square-fill"></i> Save</button>
+        <button class="btn btn-danger" *ngIf="_id" (click)="deleteCheese(_id)"><i class="bi bi-trash3-fill"></i> Delete</button>
     </section>
 </section>
 
