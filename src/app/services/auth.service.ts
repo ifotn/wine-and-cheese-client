@@ -39,4 +39,9 @@ export class AuthService {
     // pass authToken to API so server can remove it
     return this.http.get(`${this.serverUrl}/users/logout`, { withCredentials: true });
   }
+
+  verifyCode(tempSession: any) {
+    // send username + 2FA code to API for verification
+    return this.http.post(`${this.serverUrl}/users/verify-code`, tempSession, { withCredentials: true });
+  }
 }
